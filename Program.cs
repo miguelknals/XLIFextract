@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-
+// code
 
 namespace XLIFextract
 {
@@ -66,6 +66,15 @@ namespace XLIFextract
                 return;
 
             } 
+            if (Path.GetFileNameWithoutExtension(inpfileORI).Length>30)
+            {
+                Console.WriteLine("File {0} is valid.", inpfileORI);
+                Console.WriteLine("ERROR -> Max lenght filename cannot exceed 30 chars.");
+                Console.WriteLine("");
+                Console.WriteLine("Fatal error. ");
+                return; 
+
+            }
 
             var totalsegments = new List<xliffFileUnitSegment>();
             var totalids = new List<string>();
