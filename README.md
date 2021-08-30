@@ -6,7 +6,7 @@ This program reads an XLIFF created containing opentm2 files and then creates an
 with the state/word count/source/target of each one of the files.
 
 This program has been developed and compiled in a Microsoft Visual Studio Community
-2019 with Net Core 3.1 framework environment .
+2019 with Net Core 3.1 framework environment.
 
 ## Example
 
