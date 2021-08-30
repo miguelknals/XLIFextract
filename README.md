@@ -16,7 +16,8 @@ This program has been developed and compiled in a Microsoft Visual Studio Commun
 
 * Run the program
 
-```C:\tmp\XXX2>XLIFextract.exe u:\tmp\FOLDER_LAN_SHIP.xlf
+```
+C:\tmp\XXX2>XLIFextract.exe u:\tmp\FOLDER_LAN_SHIP.xlf
 XLIFextract (c) 2021 miguel canals MIT License
 File   -> u:\tmp\FOLDER_LAN_SHIP.xlf
 File u:\tmp\FOLDER_LAN_SHIP.xlf is valid
