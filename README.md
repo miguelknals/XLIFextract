@@ -25,7 +25,7 @@ EOP.```
 * Target file will be ```FOLDER_LAN_SHIP.xlsx```. This file will contain all segments with its status
 and also the unit ```id='information'```
 
-![XLSX source file](docimages/01_xlif_file.gif?raw=true "XLSX")
+![XLSX target file](docimages/02_xlsx_result.file.gif?raw=true "XLSX")
 
 
 
