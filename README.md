@@ -20,7 +20,8 @@ This program has been developed and compiled in a Microsoft Visual Studio Commun
 XLIFextract (c) 2021 miguel canals MIT License
 File   -> u:\tmp\FOLDER_LAN_SHIP.xlf
 File u:\tmp\FOLDER_LAN_SHIP.xlf is valid
-EOP.```
+EOP.
+```
 
 * Target file will be ```FOLDER_LAN_SHIP.xlsx```. This file will contain all segments with its status
 and also the unit ```id='information'```
