@@ -36,10 +36,8 @@ and also the unit ```id='information'```
 
 ![XLSX target file](docimages/02_xlsx_result.file.gif?raw=true "XLSX")
 
-* WSE11ABD001_SPA_xbench.xliff . This files can be loaded as a xliff file in Apsic XBench
+* ```FOLDER_LAN_SHIP_xbench.xliff```. This file can be loaded as a xliff file in Apsic XBench
 (free version)
-
-
 
 
 (c) miguel canals 2021 MIT License (www.mknals.com) 
