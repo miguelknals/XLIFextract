@@ -2,7 +2,7 @@
   "profiles": {
     "XLIFextract": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\u\\usr\\pro\\VS2019\\GH\\XLIFextract_dat\\CK346ABD001_SPA_S001.xlf  "
+      "commandLineArgs": "U:\\tmp\\WSE11ABD001_SPA.xlf"
     }
   }
 }

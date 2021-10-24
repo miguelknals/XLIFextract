@@ -102,10 +102,12 @@ namespace XLIFextract
 
 
             // got all segments in total
+            int RC = 0;
+            RC = CreateExcel(totalsegments,totalids, inpfileORI);
 
-            int RC = CreateExcel(totalsegments,totalids, inpfileORI);
+            RC = CreateFinalTabFile(totalsegments, totalids, inpfileORI);
 
-            
+
 
             Console.WriteLine("EOP.");
 
@@ -155,6 +157,85 @@ namespace XLIFextract
 
             }
 
+
+            int CreateFinalTabFile(List<xliffFileUnitSegment> segmentlist, List<string> segids, string xlffile)
+            {
+
+                string exten = Path.GetExtension(xlffile);
+                string aux = Path.GetFileNameWithoutExtension(xlffile);
+                string tabfile = xlffile.Replace(exten, "_xbench.xliff");
+
+                string cr = "\r\n";
+                using (StreamWriter writetext = new StreamWriter(tabfile))
+                {
+                    int seg_counter = -1;
+                    string cabecera= @"<?xml version=""1.0""?>" ;
+                    cabecera += @"<xliff version=""1.2"">";
+                    cabecera += @"<file source-language=""EN"" datatype=""plaintext"" original=""{0}"">" ;
+                    cabecera = string.Format(cabecera, exten );
+                    cabecera += @"<body>" ;
+                    string filler_trans_unit = @"<trans-unit id=""{0}"">";
+                    //string filler_source = @"<source><![CDATA[{0}]]></source>";
+                    //string filler_target = @"<target state=""{0}""><![CDATA[{1}]]></target>";
+                    string filler_source = @"<source>{0}</source>";
+                    string filler_target = @"<target state=""{0}"">{1}</target>";
+                    string filler_end_trans_unit = @"</trans-unit>" ;
+                    string footer_tabfile = @"</body>" + cr + @"</file>" + cr + @"</xliff>";
+
+                    writetext.WriteLine(cabecera);
+
+                    foreach (var seg in segmentlist)
+                    {
+                        seg_counter += 1;
+                        writetext.WriteLine(string.Format(filler_trans_unit, seg_counter.ToString() ));
+                        writetext.WriteLine(string.Format(filler_source, EscapeXml(seg.source )));
+                        writetext.WriteLine(string.Format(filler_target, seg.state, EscapeXml(seg.target )));
+                        writetext.WriteLine(string.Format(filler_end_trans_unit));
+                        if (seg_counter == 3e10)
+                        {
+                            break;
+                        }
+                     
+                    }
+
+                    writetext.WriteLine(footer_tabfile);
+                }
+
+                return 0;
+
+
+            }
+
+            //https://stackoverflow.com/questions/22906722/how-to-encode-special-characters-in-xml
+            string EscapeXml(string s)
+            {
+                string toxml = s;
+                if (!string.IsNullOrEmpty(toxml))
+                {
+                    // replace literal values with entities
+                    toxml = toxml.Replace("&", "&amp;");
+                    toxml = toxml.Replace("'", "&apos;");
+                    toxml = toxml.Replace("\"", "&quot;");
+                    toxml = toxml.Replace(">", "&gt;");
+                    toxml = toxml.Replace("<", "&lt;");
+                }
+                return toxml;
+            }
+
+            string UnescapeXml(string s)
+            {
+                string unxml = s;
+                if (!string.IsNullOrEmpty(unxml))
+                {
+                    // replace entities with literal values
+                    unxml = unxml.Replace("&apos;", "'");
+                    unxml = unxml.Replace("&quot;", "\"");
+                    unxml = unxml.Replace("&gt;", ">");
+                    unxml = unxml.Replace("&lt;", "<");
+                    unxml = unxml.Replace("&amp;", "&");
+                }
+                return unxml;
+            }
 
         }
 
