@@ -76,6 +76,7 @@ namespace XLIFextract
 
             }
 
+            Console.WriteLine("INFO -> Extracting info from {0} is valid.", inpfileORI);
             var totalsegments = new List<xliffFileUnitSegment>();
             var totalids = new List<string>();
             XLIFextract.xliffFile[] files = myxliff.file;
@@ -103,8 +104,9 @@ namespace XLIFextract
 
             // got all segments in total
             int RC = 0;
+            Console.WriteLine("INFO -> Calling Excel creating");
             RC = CreateExcel(totalsegments,totalids, inpfileORI);
-
+            Console.WriteLine("INFO -> Calling Xbench xliff");
             RC = CreateFinalTabFile(totalsegments, totalids, inpfileORI);
 
 
